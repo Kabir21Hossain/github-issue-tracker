@@ -3,7 +3,8 @@
 const DEMO_USERNAME = 'admin';
 const DEMO_PASSWORD = 'admin123';
 
-const isLoggedIn = false;
+let isLoggedIn = false;
+let isEyeClosed=true;
 
 if (isLoggedIn) {
     window.location.href = 'dashboard.html';
@@ -20,13 +21,25 @@ const togglePassword = document.getElementById('togglePassword');
 const eyeOpen = document.getElementById('eyeOpen');
 const eyeClosed = document.getElementById('eyeClosed');
 
-// Event listeners
+
 loginBtn.addEventListener('click', () => handleLogin());
-// fillDemoBtn.addEventListener('click',fillDemoCredentials);
-// togglePassword.addEventListener('click',togglePasswordVisibility);
+fillDemoBtn.addEventListener('click', () => fillDemoCredentials());
+togglePassword.addEventListener('click', () => togglePasswordVisibility());
+usernameInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        handleLogin();
+    }
+});
+
+passwordInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        handleLogin();
+    }
+});
 
 // handle login
-
 const handleLogin = () => {
     const name = usernameInput.value.trim();
     const password = passwordInput.value.trim();
@@ -61,3 +74,27 @@ const handleLogin = () => {
     },700);
 
 }
+
+const fillDemoCredentials=()=>{
+    usernameInput.value=DEMO_USERNAME;
+    passwordInput.value=DEMO_PASSWORD;
+    
+}
+
+const togglePasswordVisibility=()=>{
+    if(isEyeClosed===true){
+        passwordInput.type='text';
+        eyeOpen.classList.toggle('hidden');
+        eyeClosed.classList.toggle('hidden');
+        isEyeClosed=false;
+
+    }
+    else{
+        passwordInput.type='password';
+        eyeOpen.classList.toggle('hidden');
+        eyeClosed.classList.toggle('hidden');
+        isEyeClosed=true;
+
+    }
+}
+

@@ -71,7 +71,7 @@ const handleLogin = () => {
             passwordInput.classList.add('input-error');
         }
 
-    },700);
+    },100);
 
 }
 

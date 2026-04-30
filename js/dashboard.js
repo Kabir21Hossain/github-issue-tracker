@@ -3,10 +3,12 @@ const allBtn = document.getElementById('allBtn');
 const openBtn = document.getElementById('openBtn');
 const closedBtn = document.getElementById('closedBtn');
 const container = document.querySelector('.card-container');
+const loader = document.querySelector('#loading');
 
 let allFetchedIssues = [];
 
 const renderIssues = (issues) => {
+    loader.classList.add('hidden');
     container.innerHTML = "";
     curTotalIssues.innerText = `${issues.length} Issues`;
 
@@ -61,17 +63,39 @@ const renderIssues = (issues) => {
 };
 
 allBtn.addEventListener('click', () => {
-    renderIssues(allFetchedIssues);
+    container.classList.add('hidden');
+    loader.classList.remove('hidden');
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        container.classList.remove('hidden');
+        renderIssues(allFetchedIssues);
+        
+    }, 100);
+
 });
 
 openBtn.addEventListener('click', () => {
+    container.classList.add('hidden');
+    loader.classList.remove('hidden');
     const openIssues = allFetchedIssues.filter(issue => issue.status.toLowerCase() === 'open');
-    renderIssues(openIssues);
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        container.classList.remove('hidden');
+        renderIssues(openIssues);
+    }, 100);
+
 });
 
 closedBtn.addEventListener('click', () => {
+    container.classList.add('hidden');
+    loader.classList.remove('hidden');
     const closedIssues = allFetchedIssues.filter(issue => issue.status.toLowerCase() !== 'open');
-    renderIssues(closedIssues);
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        container.classList.remove('hidden');
+        renderIssues(closedIssues);
+    }, 500);
+
 });
 
 const loadAllIssues = async () => {
@@ -84,9 +108,12 @@ const loadAllIssues = async () => {
         const data = await res.json();
         allFetchedIssues = data.data;
         renderIssues(allFetchedIssues);
+        loader.classList.add('hidden');
     }
     catch (error) {
         console.error('Error:', error.message);
+        loader.classList.add('hidden');
+        container.innerHTML = '<p class="text-red-500 font-bold text-center">No issues found.</p>';
     }
 }
 

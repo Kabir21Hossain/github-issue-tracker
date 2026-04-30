@@ -37,13 +37,13 @@ const renderIssues = (issues) => {
 
                         <div class="${issue.labels[0] === undefined ? 'hidden' : 'flex'}  rounded-[100px] px-2 py-2 text-sm ${issue.labels[0]?.toLowerCase() === 'bug' ? 'bg-[#FEECEC] text-[#EF4444]' : issue.labels[0]?.toLowerCase() === 'help wanted' ? 'bg-[#FFF6D1] text-[#F59E0B]' : 'bg-[#BBF7D0] text-[#00A96E]'}">
                            
-                            <span>${issue.labels[0]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[0]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : '<img width="20" height="20" src="https://img.icons8.com/softteal-color/24/filled-star.png" alt="filled-star"/>'}
+                            <span>${issue.labels[0]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[0]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' :issue.labels[0]?.toLowerCase() === 'documentation'?'<i class="fa-solid fa-file"></i>' :'<img width="20" height="20" src="https://img.icons8.com/softteal-color/24/filled-star.png" alt="filled-star"/>'}
                             </span>
                             <span class="label-0 uppercase ">
                                 ${issue.labels[0] || ''}</span>
                         </div>
-                        <div class="${issue.labels[1] === undefined ? 'hidden' : 'flex'}  gap-1 justify-center items-center rounded-[100px] px-2 py-2 text-sm bg-[#FDE68A] text-[#D97706]">
-                                                        <span>${issue.labels[1]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[1]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : '<i class="fa-solid fa-info-circle"></i>'}
+                        <div class="${issue.labels[1] === undefined ? 'hidden' : 'flex'}  gap-1 justify-center items-center rounded-[100px] px-2 py-2 text-sm ${issue.labels[0]?.toLowerCase() === 'bug' ? 'bg-[#FEECEC] text-[#EF4444]' : issue.labels[0]?.toLowerCase() === 'help wanted' ? 'bg-[#FFF6D1] text-[#F59E0B]' : 'bg-[#BBF7D0] text-[#00A96E]'}">
+                                                        <span>${issue.labels[1]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[1]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : issue.labels[1]?.toLowerCase() === 'documentation'?'<i class="fa-solid fa-file"></i>': '<i class="fa-solid fa-info-circle"></i>'}
 
                         <span
                             class="label-1 uppercase">

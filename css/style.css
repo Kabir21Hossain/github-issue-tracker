@@ -16,5 +16,9 @@ header img {
     object-fit: contain;
 }
 
+#modal-box{
+    width:800px !important;
+    max-width: 800px !important; /* Override DaisyUI's default max-width */
+}
 
 

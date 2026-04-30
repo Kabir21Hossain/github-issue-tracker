@@ -42,30 +42,32 @@
 
         <div class="flex gap-2 justify-end items-center">
             <div class="search-box ">
-            <div class="join space-x-2">
-                <div>
-                    <label
-                        class="input validator join-item relative mr-2 rounded-lg focus:outline-none outline-none hover:-translate-y-0.5 hover:shadow-[]">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="currentColor"
-                                    stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <input type="text" placeholder="Search issues..." class="pl-10" id="srcBox" required />
-                    </label>
+                <div class="join space-x-2">
+                    <div>
+                        <label
+                            class="input validator join-item relative mr-2 rounded-lg focus:outline-none outline-none hover:-translate-y-0.5 hover:shadow-[]">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
+                                        stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Search issues..." class="pl-10" id="srcBox" required />
+                        </label>
 
 
+                    </div>
+                    <button class="btn btn-primary join-item text-sm md:text-lg p-[1px] md:p-[1rem]"
+                        id="srcNewIssue">+New
+                        Issues</button>
                 </div>
-                <button class="btn btn-primary join-item text-sm md:text-lg p-[1px] md:p-[1rem]" id="srcNewIssue">+New
-                    Issues</button>
+
+
             </div>
 
-
-        </div>
-
-        <span id="logOutBtn" class="btn btn-primary btn-soft rounded-lg w-[50px] md:w-[100px]"><i
-                class="fa-solid fa-arrow-right-from-bracket fa-2x"></i><span>
+            <span id="logOutBtn" class="btn btn-primary btn-soft rounded-lg w-[50px] md:w-[100px]"><i
+                    class="fa-solid fa-arrow-right-from-bracket fa-2x"></i><span>
         </div>
     </header>
 
@@ -82,7 +84,7 @@
 
     <main>
         <div
-            class="card-header p-6 rouned-md border-b-2 border-solid border-gray-500  container mx-auto bg-white/90 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm border border-slate-200/70 flex flex-row gap-2 justify-between items-center">
+            class="card-header p-6 rouned-md border-b-2 border-solid container mx-auto bg-white/90 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm border border-slate-200/70 flex flex-row gap-2 justify-between items-center">
             <div class="left flex gap-2">
                 <div class="w-12 h-12 rounded-full bg-purple-200 relative"><img src="assets/Aperture.png" alt="aperture"
                         class="absolute top-1/2 -translate-y-1/2 left-2"></div>
@@ -108,11 +110,12 @@
 
         <div
             class="card-container p-6 container mx-auto bg-white/90 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm border border-slate-200/70 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
+
 
         </div>
 
-        <div id="loading" class="loader"><span class="loading loading-spinner loading-xl absolute top-1/2 left-1/2 z-10"></span></div>
+        <div id="loading" class="loader"><span
+                class="loading loading-spinner loading-xl absolute top-1/2 left-1/2 z-10"></span></div>
 
 
         </div>
@@ -121,6 +124,19 @@
         </div>
 
     </main>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box border-2 rounded-lg p-6 bg-white shadow-sm" id="modal-box">
+
+            <!-- make design -->
+            
+        </div>
+    </dialog>
+
+
+    
 
     <script src="js/dashboard.js"></script>
 </body>

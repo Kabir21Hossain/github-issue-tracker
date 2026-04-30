@@ -28,7 +28,7 @@
 
 <body>
     <header
-        class="flex flex-col md:flex-row gap-5 justify-between w-full mx-auto px-8 md:px-20 py-5 bg-white/90 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm border border-slate-200/70 mb-[60px]">
+        class="flex flex-col  md:flex-row gap-5 justify-between w-full mx-auto px-8 md:px-20 py-5 bg-white/90 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm border border-slate-200/70 mb-[60px]">
         <div class="flex gap-3 items-center flex-1">
             <span
                 class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-slate-100 flex items-center justify-center overflow-hidden shadow-sm">
@@ -40,7 +40,8 @@
             </div>
         </div>
 
-        <div class="search-box ">
+        <div class="flex gap-2 justify-end items-center">
+            <div class="search-box ">
             <div class="join space-x-2">
                 <div>
                     <label
@@ -63,8 +64,9 @@
 
         </div>
 
-        <span id="logOutBtn" class="btn btn-primary btn-soft rounded-lg"><i
+        <span id="logOutBtn" class="btn btn-primary btn-soft rounded-lg w-[50px] md:w-[100px]"><i
                 class="fa-solid fa-arrow-right-from-bracket fa-2x"></i><span>
+        </div>
     </header>
 
     <!-- all open closed button -->

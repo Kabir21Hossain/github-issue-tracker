@@ -4,6 +4,10 @@ const openBtn = document.getElementById('openBtn');
 const closedBtn = document.getElementById('closedBtn');
 const container = document.querySelector('.card-container');
 const loader = document.querySelector('#loading');
+const logoutBtn=document.getElementById('logOutBtn');
+const searchBox=document.getElementById('srcBox');
+const searchBtn=document.getElementById('srcNewIssue');
+
 const btnsId=['allBtn','openBtn','closedBtn'];
 let allFetchedIssues = [];
 
@@ -44,7 +48,7 @@ const renderIssues = (issues) => {
                             <span class="label-0 uppercase ">
                                 ${issue.labels[0] || ''}</span>
                         </div>
-                        <div class="${issue.labels[1] === undefined ? 'hidden' : 'flex'}  gap-1 justify-center items-center rounded-[100px] px-2 py-2 text-sm ${issue.labels[0]?.toLowerCase() === 'bug' ? 'bg-[#FEECEC] text-[#EF4444]' : issue.labels[0]?.toLowerCase() === 'help wanted' ? 'bg-[#FFF6D1] text-[#F59E0B]' : 'bg-[#BBF7D0] text-[#00A96E]'}">
+                        <div class="${issue.labels[1] === undefined ? 'hidden' : 'flex'}  gap-1 justify-center items-center rounded-[100px] px-2 py-2 text-sm ${issue.labels[1]?.toLowerCase() === 'bug' ? 'bg-[#FEECEC] text-[#EF4444]' : issue.labels[1]?.toLowerCase() === 'help wanted' ? 'bg-[#FFF6D1] text-[#F59E0B]' : 'bg-[#BBF7D0] text-[#00A96E]'}">
                                                         <span>${issue.labels[1]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[1]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : issue.labels[1]?.toLowerCase() === 'documentation'?'<i class="fa-solid fa-file"></i>': '<i class="fa-solid fa-info-circle"></i>'}
 
                         <span
@@ -101,6 +105,11 @@ closedBtn.addEventListener('click', () => {
 
 });
 
+logoutBtn.addEventListener('click',()=>logout());
+searchBtn.addEventListener('click',()=>srcNewIssue());
+
+
+
 const loadAllIssues = async () => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
     try {
@@ -132,5 +141,37 @@ const highlighter=(btnId)=>{
     })
 
 }
+
+const logout=()=>{
+    window.location.href='index.html';
+}
+
+const fetchSrcIssue=async(srcText)=>{
+    try{
+        const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${srcText}`);
+        if(!res.ok){
+            throw new Error('something went wrong',res.status);
+
+        }
+        const issues=await res.json();
+        renderIssues(issues.data);
+    }
+
+    catch(error){
+        console.log('error',error.message);
+        container.innerHTML = '<p class="text-red-500 font-bold text-center">No issues found.</p>';
+    }
+
+}
+
+
+const srcNewIssue=()=>{
+    const searchText=searchBox.value.toLowerCase().trim();
+    fetchSrcIssue(searchText);
+
+
+}
+
+
 
 loadAllIssues();

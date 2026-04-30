@@ -1,33 +1,23 @@
 let curTotalIssues = document.getElementById('total-issues');
+const allBtn = document.getElementById('allBtn');
+const openBtn = document.getElementById('openBtn');
+const closedBtn = document.getElementById('closedBtn');
+const container = document.querySelector('.card-container');
 
-const loadAllIssues = async () => {
-    const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
-    try {
-        const res = await fetch(url);
-        if (!res.ok) {
-            throw new Error(`Something went wrong ${res.status}`)
-        }
-        const data = await res.json();
-        displayAllIssues(data.data);
-    }
-    catch (error) {
-        console.error('Error:', error.message);
-    }
-}
+let allFetchedIssues = [];
 
-const displayAllIssues = (issues) => {
+const renderIssues = (issues) => {
+    container.innerHTML = "";
     curTotalIssues.innerText = `${issues.length} Issues`;
-    issues.forEach(issue => {
-        console.log(issue);
-        const container = document.querySelector('.card-container');
 
+    issues.forEach(issue => {
         const cardDiv = document.createElement('div');
-        cardDiv.classList.add('bg-base-100', 'w-full', 'shadow-sm', 'border-t-4', `${issue.status.toLowerCase() === 'open' ? 'border-t-green-400' : 'border-t-purple-400'}`,'p-4');
+        cardDiv.classList.add('bg-base-100', 'w-full', 'shadow-sm', 'border-t-4', `${issue.status.toLowerCase() === 'open' ? 'border-t-green-400' : 'border-t-purple-400'}`, 'p-4');
 
         cardDiv.innerHTML = `
         <div class="status-priority flex justify-between items-center">
                     <span class="status w-8 h-8 rounded-full">
-                        ${issue.status==='open' ? "<img src='assets/Open-Status.png' alt='open-status' class='w-8 h-8 object-contain'>" : "<img src='assets/Closed-Status.png' alt='closed-status' class='w-8 h-8 object-contain'>"}
+                        ${issue.status.toLowerCase() === 'open' ? "<img src='assets/Open-Status.png' alt='open-status' class='w-8 h-8 object-contain'>" : "<img src='assets/Closed-Status.png' alt='closed-status' class='w-8 h-8 object-contain'>"}
             
                     </span>
 
@@ -45,17 +35,16 @@ const displayAllIssues = (issues) => {
                         ${issue.description}</p>
                     <div class="labels ${(!issue.labels || issue.labels.length === 0) ? 'hidden' : 'flex'} gap-1 border-b-4 border-b-white pb-[16px]">
 
-                        <div class="${issue.labels[0] === undefined ? 'hidden' : 'flex'}  rounded-[100px] px-2 py-2 text-sm bg-[#FEECEC] text-[#EF4444]">
-                            <span>
-                                <i class="fa-solid fa-bug"></i>
+                        <div class="${issue.labels[0] === undefined ? 'hidden' : 'flex'}  rounded-[100px] px-2 py-2 text-sm ${issue.labels[0]?.toLowerCase() === 'bug' ? 'bg-[#FEECEC] text-[#EF4444]' : issue.labels[0]?.toLowerCase() === 'help wanted' ? 'bg-[#FFF6D1] text-[#F59E0B]' : 'bg-[#BBF7D0] text-[#00A96E]'}">
+                           
+                            <span>${issue.labels[0]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[0]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : '<img width="20" height="20" src="https://img.icons8.com/softteal-color/24/filled-star.png" alt="filled-star"/>'}
                             </span>
                             <span class="label-0 uppercase ">
                                 ${issue.labels[0] || ''}</span>
                         </div>
                         <div class="${issue.labels[1] === undefined ? 'hidden' : 'flex'}  gap-1 justify-center items-center rounded-[100px] px-2 py-2 text-sm bg-[#FDE68A] text-[#D97706]">
-                            <span>
-                                <i class="fa-solid fa-life-ring"></i>
-                            </span>
+                                                        <span>${issue.labels[1]?.toLowerCase() === 'bug' ? '<i class="fa-solid fa-bug"></i>' : issue.labels[1]?.toLowerCase() === 'help wanted' ? '<i class="fa-solid fa-life-ring"></i>' : '<i class="fa-solid fa-info-circle"></i>'}
+
                         <span
                             class="label-1 uppercase">
                             ${issue.labels[1] || ''}</span>
@@ -68,9 +57,37 @@ const displayAllIssues = (issues) => {
                     <p class="date">${new Date(issue.createdAt).toLocaleDateString()}</p>
                 </div>`;
         container.appendChild(cardDiv);
+    });
+};
 
-    })
+allBtn.addEventListener('click', () => {
+    renderIssues(allFetchedIssues);
+});
 
+openBtn.addEventListener('click', () => {
+    const openIssues = allFetchedIssues.filter(issue => issue.status.toLowerCase() === 'open');
+    renderIssues(openIssues);
+});
+
+closedBtn.addEventListener('click', () => {
+    const closedIssues = allFetchedIssues.filter(issue => issue.status.toLowerCase() !== 'open');
+    renderIssues(closedIssues);
+});
+
+const loadAllIssues = async () => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
+    try {
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error(`Something went wrong ${res.status}`)
+        }
+        const data = await res.json();
+        allFetchedIssues = data.data;
+        renderIssues(allFetchedIssues);
+    }
+    catch (error) {
+        console.error('Error:', error.message);
+    }
 }
 
 loadAllIssues();

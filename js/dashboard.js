@@ -4,7 +4,7 @@ const openBtn = document.getElementById('openBtn');
 const closedBtn = document.getElementById('closedBtn');
 const container = document.querySelector('.card-container');
 const loader = document.querySelector('#loading');
-
+const btnsId=['allBtn','openBtn','closedBtn'];
 let allFetchedIssues = [];
 
 const renderIssues = (issues) => {
@@ -68,6 +68,7 @@ allBtn.addEventListener('click', () => {
     setTimeout(() => {
         loader.classList.add('hidden');
         container.classList.remove('hidden');
+        highlighter('allBtn');
         renderIssues(allFetchedIssues);
         
     }, 100);
@@ -81,6 +82,7 @@ openBtn.addEventListener('click', () => {
     setTimeout(() => {
         loader.classList.add('hidden');
         container.classList.remove('hidden');
+        highlighter('openBtn');
         renderIssues(openIssues);
     }, 100);
 
@@ -93,8 +95,9 @@ closedBtn.addEventListener('click', () => {
     setTimeout(() => {
         loader.classList.add('hidden');
         container.classList.remove('hidden');
+        highlighter('closedBtn');
         renderIssues(closedIssues);
-    }, 500);
+    }, 100);
 
 });
 
@@ -115,6 +118,19 @@ const loadAllIssues = async () => {
         loader.classList.add('hidden');
         container.innerHTML = '<p class="text-red-500 font-bold text-center">No issues found.</p>';
     }
+}
+
+const highlighter=(btnId)=>{
+    btnsId.forEach(id=>{
+        if(btnId===id){
+            document.getElementById(id).classList.add('btn-primary');
+        }
+        else{
+            document.getElementById(id).classList.remove('btn-primary');
+        }
+
+    })
+
 }
 
 loadAllIssues();

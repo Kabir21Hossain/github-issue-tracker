@@ -1,5 +1,12 @@
 
+## Links
+
+- **GitHub Repository Link:** [GitHub](https://github.com/Kabir21Hossain/github-issue-tracker)
+- **Live Site Link:** [Home](https://kabir21hossain.github.io/github-issue-tracker/index.html)
+
+-
 #  GitHub Issues Tracker
+
 
 A clean, responsive GitHub Issues Management Dashboard built with HTML, Tailwind CSS, DaisyUI, and Vanilla JavaScript.
 * login page
@@ -12,20 +19,20 @@ A clean, responsive GitHub Issues Management Dashboard built with HTML, Tailwind
 
 > Deploy to GitHub Pages, Netlify, or Vercel — open `index.html` to start.
 
-## 🔑 Demo Credentials
+##  Demo Credentials
 
 ```
 Username: admin
 Password: admin123
 ```
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **HTML5** — Semantic markup
 - **CSS** (Vanilla + Tailwind CDN + DaisyUI) — Styling & layout
 - **JavaScript** (Vanilla ES6+) — All logic, no frameworks
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 github-issues-tracker/
@@ -38,22 +45,22 @@ github-issues-tracker/
     └── dashboard.js    # Dashboard logic
 ```
 
-## ✨ Features
+##  Features
 
-- 🔐 Login with demo credentials
-- 📋 View all GitHub issues from API
-- 🟢 Filter by Open / Closed / All tabs
-- 🔍 Search issues by keyword
-- 📦 Issue detail modal on card click
-- 🎨 Green top border for open, purple for closed cards
-- ⏳ Loading spinner on data fetch
-- 📱 Responsive for mobile devices
+-  Login with demo credentials
+-  View all GitHub issues from API
+-  Filter by Open / Closed / All tabs
+-  Search issues by keyword
+-  Issue detail modal on card click
+-  Green top border for open, purple for closed cards
+-  Loading spinner on data fetch
+-  Responsive for mobile devices
 
 ---
 
-## 📚 JavaScript Concepts
+##  JavaScript Concepts
 
-### 1️⃣ What is the difference between `var`, `let`, and `const`?
+### 1. What is the difference between `var`, `let`, and `const`?
 
 These are three ways to declare variables in JavaScript, and they differ in scope, reassignment, and hoisting behavior.
 
@@ -67,7 +74,7 @@ In modern JavaScript, the best practice is: use `const` by default, use `let` wh
 
 ---
 
-### 2️⃣ What is the spread operator (`...`)?
+### 2️. What is the spread operator (`...`)?
 
 The spread operator (`...`) takes an iterable (like an array or object) and **expands** its elements or properties in place.
 
@@ -93,7 +100,7 @@ The spread operator is useful for creating shallow copies of data, combining arr
 
 ---
 
-### 3️⃣ What is the difference between `map()`, `filter()`, and `forEach()`?
+### 3️. What is the difference between `map()`, `filter()`, and `forEach()`?
 
 All three are array methods that iterate over elements, but they have different purposes and return values.
 
@@ -118,7 +125,7 @@ The key difference: `map()` and `filter()` are **pure** (they produce new arrays
 
 ---
 
-### 4️⃣ What is an arrow function?
+### 4️. What is an arrow function?
 
 An arrow function is a shorter, more concise syntax for writing functions in JavaScript, introduced in ES6.
 
@@ -145,7 +152,7 @@ Arrow functions are not suitable as object methods or constructors because of th
 
 ---
 
-### 5️⃣ What are template literals?
+### 5️. What are template literals?
 
 Template literals are a way to write strings in JavaScript using **backticks** (`` ` ``) instead of single or double quotes. They allow you to embed expressions directly inside a string using `${}` syntax, which is called **string interpolation**.
 
@@ -173,7 +180,3 @@ You can put any JavaScript expression inside `${}` — variables, function calls
 
 ---
 
-## 📤 Submission
-
-- **GitHub Repository Link:** [GitHub](https://github.com/Kabir21Hossain/github-issue-tracker)
-- **Live Site Link:** [GitHub Pages](https://kabir21hossain.github.io/github-issue-tracker/index.html)

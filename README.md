@@ -13,9 +13,6 @@ A clean, responsive GitHub Issues Management Dashboard built with HTML, Tailwind
 ![GitHub Issues Tracker Screenshot](images/login.jpg)
 ![GitHub Issues Tracker Screenshot](images/dashboard.jpg)
 
-## 🚀 Live Demo
-
-> [Open Live Demo](https://kabir21hossain.github.io/demo-theme-project-api-fetching-/)
 
 > Deploy to GitHub Pages, Netlify, or Vercel — open `index.html` to start.
 
